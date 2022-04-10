@@ -1,6 +1,5 @@
 const { Task, Folder, User } = require("../db");
 const bcrypt = require("bcrypt");
-const { getTasks } = require("./utils");
 
 module.exports = {
   async postUser(req) {
@@ -43,7 +42,6 @@ module.exports = {
     if (!bcrypt.compareSync(password, user.password))
       return { error: "Error: invalid password." };
 
-    //return getTasks(user.id);
     return user.id;
   },
 };

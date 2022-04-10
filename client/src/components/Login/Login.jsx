@@ -60,12 +60,14 @@ const Login = ({ getTasks, setUserId }) => {
             type="text"
             onChange={handleOnChange}
             value={input.username}
+            maxLength="20"
           />
           <input
             name="password"
-            type="text"
+            type="password"
             onChange={handleOnChange}
             value={input.password}
+            maxLength="20"
           />
           <input type="submit" value="Log In" />
         </form>
@@ -79,12 +81,14 @@ const Login = ({ getTasks, setUserId }) => {
             type="text"
             onChange={handleOnChange}
             value={input.username}
+            maxLength="20"
           />
           <input
             name="password"
-            type="text"
+            type="password"
             onChange={handleOnChange}
             value={input.password}
+            maxLength="20"
           />
           <input type="submit" value="Sign Up" />
         </form>

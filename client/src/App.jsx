@@ -39,17 +39,23 @@ function App() {
     setTasks(data);
   };
 
+  const handleLogout = () => {
+    window.location.reload(false);
+  };
+
   return (
     <div className={styles.App}>
       {tasks ? (
         <div className={styles.content}>
           <h1>ToDo App</h1>
+          <button onClick={handleLogout}>Log Out</button>
           <form action="#" onSubmit={handleSubmit}>
             <input
               onChange={(e) => setInput(e.target.value)}
               type="text"
               placeholder="Create folder ..."
               value={input}
+              maxLength="20"
             />
             <input type="submit" value="Create" />
           </form>

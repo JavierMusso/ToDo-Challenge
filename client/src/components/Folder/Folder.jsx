@@ -65,6 +65,7 @@ const Folder = ({ folder, deleteFolder, setTasks, userId }) => {
             type="text"
             placeholder="Add task ..."
             value={input}
+            maxLength="20"
           />
           <input type="submit" value="Add task" />
         </form>

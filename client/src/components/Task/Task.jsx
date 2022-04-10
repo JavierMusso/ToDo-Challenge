@@ -87,6 +87,7 @@ const Task = ({ task, deleteTask, setTasks, userId }) => {
               placeholder="new task"
               onChange={handleOnChange}
               value={input.task}
+              maxLength="20"
             />
           </form>
         </div>

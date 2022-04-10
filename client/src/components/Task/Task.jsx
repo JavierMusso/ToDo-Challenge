@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import styles from "./Task.module.css";
 import axios from "axios";
 
-const Task = ({ task, deleteTask, setTasks }) => {
+const Task = ({ task, deleteTask, setTasks, userId }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
   const [input, setInput] = useState({
     taskId: task.id,
     task: task.task,
     status: task.status,
+    userId: userId,
   });
 
   const updateTask = async (input) => {

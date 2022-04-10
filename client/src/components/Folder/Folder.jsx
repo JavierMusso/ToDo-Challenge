@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./Folder.module.css";
 import Task from "../Task/Task";
 
-const Folder = ({ folder, deleteFolder, setTasks }) => {
+const Folder = ({ folder, deleteFolder, setTasks, userId }) => {
   folder.tasks.sort((a, b) => a.id - b.id);
   const [input, setInput] = useState("");
   const [toggleShow, setToggleShow] = useState(false);
@@ -18,12 +18,15 @@ const Folder = ({ folder, deleteFolder, setTasks }) => {
     let { data } = await axios.post("/tasks", {
       task: task,
       folderId: folder.id,
+      userId: userId,
     });
     setTasks(data);
   };
 
   const deleteTask = async (id) => {
-    let { data } = await axios.delete("/tasks", { data: { taskId: id } });
+    let { data } = await axios.delete("/tasks", {
+      data: { taskId: id, userId: userId },
+    });
     setTasks(data);
   };
 
@@ -48,6 +51,7 @@ const Folder = ({ folder, deleteFolder, setTasks }) => {
                   task={task}
                   deleteTask={deleteTask}
                   setTasks={setTasks}
+                  userId={userId}
                 />
               );
             })

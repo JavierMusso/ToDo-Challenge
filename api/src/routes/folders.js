@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  return res.json(await getFolders());
+  return res.json(await getFolders(req));
 });
 
 router.delete("/", async (req, res) => {

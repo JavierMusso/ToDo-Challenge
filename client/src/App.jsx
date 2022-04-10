@@ -1,20 +1,21 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Folder from "./components/Folder/Folder";
 import styles from "./App.module.css";
+import Login from "./components/Login/Login";
 
 function App() {
   const [tasks, setTasks] = useState();
   const [input, setInput] = useState("");
+  const [userId, setUserId] = useState();
 
-  useEffect(() => {
-    async function getTasks() {
-      let { data } = await axios.get("/folders");
-      return data;
-    }
-
-    getTasks().then(setTasks);
-  }, []);
+  async function getTasks(userId) {
+    let { data } = await axios.get("/folders", {
+      params: { userId: userId },
+    });
+    console.log(data);
+    setTasks(data);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,44 +24,54 @@ function App() {
   };
 
   const createFolder = async (folderName) => {
-    let { data } = await axios.post("/folders", { folderName: folderName });
+    console.log(userId);
+    let { data } = await axios.post("/folders", {
+      folderName: folderName,
+      userId: userId,
+    });
     setTasks(data);
   };
 
   const deleteFolder = async (id) => {
-    let { data } = await axios.delete("/folders", { data: { folderId: id } });
+    let { data } = await axios.delete("/folders", {
+      data: { folderId: id, userId: userId },
+    });
     setTasks(data);
   };
 
   return (
     <div className={styles.App}>
-      <div className={styles.content}>
-        <h1>ToDo App</h1>
+      {tasks ? (
+        <div className={styles.content}>
+          <h1>ToDo App</h1>
+          <form action="#" onSubmit={handleSubmit}>
+            <input
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+              placeholder="Create folder ..."
+              value={input}
+            />
+            <input type="submit" value="Create" />
+          </form>
 
-        <form action="#" onSubmit={handleSubmit}>
-          <input
-            onChange={(e) => setInput(e.target.value)}
-            type="text"
-            placeholder="Create folder ..."
-            value={input}
-          />
-          <input type="submit" value="Create" />
-        </form>
-
-        <ul>
-          {tasks?.map((folder) => {
-            return (
-              <li key={folder.id}>
-                <Folder
-                  folder={folder}
-                  deleteFolder={deleteFolder}
-                  setTasks={setTasks}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+          <ul>
+            {tasks?.map((folder) => {
+              return (
+                <li key={folder.id}>
+                  <Folder
+                    folder={folder}
+                    deleteFolder={deleteFolder}
+                    setTasks={setTasks}
+                    userId={userId}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        <Login getTasks={getTasks} setUserId={setUserId} />
+      )}
     </div>
   );
 }

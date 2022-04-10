@@ -63,7 +63,9 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Task, Folder } = sequelize.models;
+const { Task, Folder, User } = sequelize.models;
+User.hasMany(Folder);
+Folder.belongsTo(User);
 
 Folder.hasMany(Task);
 Task.belongsTo(Folder);

@@ -1,46 +1,33 @@
 const { Folder, Task } = require("../db");
+const { getTasks } = require("./utils");
 
 module.exports = {
   async postFolders(req) {
-    let { folderName } = req.body;
-    console.log(req.body);
+    let { folderName, userId } = req.body;
+
+    if (!userId) return { error: "Error: a user Id is required." };
 
     if (!folderName) return { error: "Error: a folder name is required." };
 
     await Folder.create({
       folderName,
+      userId,
     });
 
-    let folderFound = await Folder.findAll({
-      include: {
-        model: Task,
-      },
-    });
-
-    if (!folderFound) return { msg: "No folders created" };
-
-    return folderFound;
+    return getTasks(userId);
   },
 
-  async getFolders() {
-    let folderFound = await Folder.findAll({
-      include: {
-        model: Task,
-      },
-    });
+  async getFolders(req) {
+    let { userId } = req.query;
+    if (!userId) return { error: "Error: a user Id is required." };
 
-    if (!folderFound) return { msg: "No folders created" };
-
-    return folderFound;
-  },
-
-  putTasks() {
-    return { msg: "hola put" };
+    return getTasks(userId);
   },
 
   async deleteFolders(req) {
-    let { folderId } = req.body;
+    let { folderId, userId } = req.body;
 
+    if (!userId) return { error: "Error: a user Id is required." };
     if (!folderId) return { error: "Error: a folder Id is required." };
 
     await Task.destroy({
@@ -55,14 +42,6 @@ module.exports = {
       },
     });
 
-    let folderFound = await Folder.findAll({
-      include: {
-        model: Task,
-      },
-    });
-
-    if (!folderFound) return { msg: "No folders created" };
-
-    return folderFound;
+    return getTasks(userId);
   },
 };

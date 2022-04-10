@@ -1,0 +1,22 @@
+const express = require("express");
+const {
+  postFolders,
+  getFolders,
+  deleteFolders,
+} = require("../controllers/folders");
+
+const router = express.Router();
+
+router.post("/", async (req, res) => {
+  return res.json(await postFolders(req));
+});
+
+router.get("/", async (req, res) => {
+  return res.json(await getFolders(req));
+});
+
+router.delete("/", (req, res) => {
+  return res.json(deleteFolders(req));
+});
+
+module.exports = router;

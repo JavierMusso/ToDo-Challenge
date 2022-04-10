@@ -12,11 +12,11 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-  return res.json(await getFolders(req));
+  return res.json(await getFolders());
 });
 
-router.delete("/", (req, res) => {
-  return res.json(deleteFolders(req));
+router.delete("/", async (req, res) => {
+  return res.json(await deleteFolders(req));
 });
 
 module.exports = router;

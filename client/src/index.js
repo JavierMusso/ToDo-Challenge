@@ -1,10 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App";
+import axios from "axios";
+import "./reset.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);

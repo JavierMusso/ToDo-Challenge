@@ -11,8 +11,8 @@ router.put("/", async (req, res) => {
   return res.json(await putTasks(req));
 });
 
-router.delete("/", (req, res) => {
-  return res.json(deleteTasks(req));
+router.delete("/", async (req, res) => {
+  return res.json(await deleteTasks(req));
 });
 
 module.exports = router;

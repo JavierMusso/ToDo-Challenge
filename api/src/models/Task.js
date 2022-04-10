@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
     },
     status: {
       type: DataTypes.ENUM,
-      values: ["not started", "in progress", "complete"],
+      values: ["notStarted", "inProgress", "completed"],
       allowNull: false,
     },
   });

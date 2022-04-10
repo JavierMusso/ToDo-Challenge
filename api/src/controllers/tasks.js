@@ -11,13 +11,21 @@ module.exports = {
 
     if (!folderFound) return { error: "Error: invalid folder." };
 
-    const newTask = await Task.create({
+    await Task.create({
       task,
-      status: "not started",
+      status: "notStarted",
       folderId,
     });
 
-    return newTask;
+    let response = await Folder.findAll({
+      include: {
+        model: Task,
+      },
+    });
+
+    if (!response) return { msg: "No folders created" };
+
+    return response;
   },
 
   async putTasks(req) {
@@ -34,19 +42,36 @@ module.exports = {
       status,
     });
 
-    return { msg: "Task updated succesfully." };
+    let folderFound = await Folder.findAll({
+      include: {
+        model: Task,
+      },
+    });
+
+    if (!folderFound) return { msg: "No folders created" };
+
+    return folderFound;
   },
 
-  deleteTasks(req) {
+  async deleteTasks(req) {
     let { taskId } = req.body;
 
     if (!taskId) return { error: "Error: taskId required." };
 
-    Task.destroy({
+    await Task.destroy({
       where: {
         id: taskId,
       },
     });
-    return { msg: "Task deleted succesfully." };
+
+    let folderFound = await Folder.findAll({
+      include: {
+        model: Task,
+      },
+    });
+
+    if (!folderFound) return { msg: "No folders created" };
+
+    return folderFound;
   },
 };

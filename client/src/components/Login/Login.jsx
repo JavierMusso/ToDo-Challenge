@@ -52,15 +52,18 @@ const Login = ({ getTasks, setUserId }) => {
 
   return (
     <div className={styles.LoginSignUp}>
+      <h1>ToDo App Ensolvers</h1>
       <div className={toggle ? styles.show : styles.hide}>
-        <h2>Log In</h2>
-        <form action="#" onSubmit={handleSubmit}>
+        <form action="#" onSubmit={handleSubmit} autoComplete="off">
           <input
             name="username"
             type="text"
             onChange={handleOnChange}
             value={input.username}
             maxLength="20"
+            placeholder="Username"
+            autoComplete="off"
+            required
           />
           <input
             name="password"
@@ -68,13 +71,15 @@ const Login = ({ getTasks, setUserId }) => {
             onChange={handleOnChange}
             value={input.password}
             maxLength="20"
+            placeholder="****"
+            autoComplete="off"
+            required
           />
-          <input type="submit" value="Log In" />
+          <input type="submit" value="Log In" className={styles.submit} />
         </form>
       </div>
 
       <div className={toggle ? styles.hide : styles.show}>
-        <h2>Sign Up</h2>
         <form action="#" onSubmit={handleSubmit}>
           <input
             name="username"
@@ -82,6 +87,9 @@ const Login = ({ getTasks, setUserId }) => {
             onChange={handleOnChange}
             value={input.username}
             maxLength="20"
+            placeholder="Username"
+            autoComplete="false"
+            required
           />
           <input
             name="password"
@@ -89,8 +97,11 @@ const Login = ({ getTasks, setUserId }) => {
             onChange={handleOnChange}
             value={input.password}
             maxLength="20"
+            placeholder="****"
+            autoComplete="off"
+            required
           />
-          <input type="submit" value="Sign Up" />
+          <input type="submit" value="Sign Up" className={styles.submit} />
         </form>
       </div>
       <button onClick={handleToggle}>

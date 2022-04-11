@@ -1,8 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap')
+
 .App
-	background-color: rgb(74, 74, 74)
 	min-height: 100vh
 	width: 100%
 	display: flex
 	flex-direction: column
+	background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)
+	font-family: 'Roboto', sans-serif
+	color: #1f003b
 	.content
 		margin: auto
+		height: 500px
+		.logout
+			border: none
+			background: none
+			cursor: pointer
+		.logout:hover
+			text-decoration: underline
+		.create
+			form
+				display: flex
+				justify-content: center
+				gap: 1rem
+				margin: 10px
+				height: 2rem
+				input[type=text]
+					background: none
+					border: 0
+					border-bottom: 2px solid #1f003b
+					outline: none
+				input[type=text]::placeholder
+					font-weight: 300
+					color: #d8d8d8
+				input[type=submit]
+					background-color: #eedaff
+					font-size: 1rem
+					cursor: pointer
+					transition: background-color 0.2s ease-in-out
+					border: 0
+					border-radius: 5px
+				input[type=submit]:hover
+					background-color: #1f003b
+					color: #eedaff
+
+@media (min-width: 1120px)
+	.content
+		margin-top: 30px

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Folder.module.css";
 import Task from "../Task/Task";
+import { AiFillDelete } from "react-icons/ai";
+import { BsChevronBarDown, BsChevronBarUp } from "react-icons/bs";
 
 const Folder = ({ folder, deleteFolder, setTasks, userId }) => {
   folder.tasks.sort((a, b) => a.id - b.id);
@@ -35,10 +37,18 @@ const Folder = ({ folder, deleteFolder, setTasks, userId }) => {
       <div className={styles.title}>
         <h3>{folder.folderName}</h3>
         <div>
-          <button onClick={() => setToggleShow(!toggleShow)}>
-            {toggleShow ? "Hide" : "Show"}
+          <button
+            onClick={() => setToggleShow(!toggleShow)}
+            className={styles.expand}
+          >
+            {toggleShow ? <BsChevronBarUp /> : <BsChevronBarDown />}
           </button>
-          <button onClick={() => deleteFolder(folder.id)}>Delete</button>
+          <button
+            onClick={() => deleteFolder(folder.id)}
+            className={styles.delete}
+          >
+            <AiFillDelete />
+          </button>
         </div>
       </div>
       <div className={toggleShow ? styles.show : styles.hide}>
@@ -56,10 +66,10 @@ const Folder = ({ folder, deleteFolder, setTasks, userId }) => {
               );
             })
           ) : (
-            <li>No tasks in this folder.</li>
+            <li className={styles.emptyFolder}>No tasks in this folder.</li>
           )}
         </ul>
-        <form action="#" onSubmit={handleSubmit}>
+        <form action="#" onSubmit={handleSubmit} className={styles.addTask}>
           <input
             onChange={(e) => setInput(e.target.value)}
             type="text"

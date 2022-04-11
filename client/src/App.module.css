@@ -1,5 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 .App {
-  background-color: #4a4a4a;
   min-height: 100vh;
   width: 100%;
   display: -webkit-box;
@@ -9,9 +9,84 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-image: -webkit-gradient(linear, left bottom, right top, from(#d16ba5), color-stop(#c777b9), color-stop(#ba83ca), color-stop(#aa8fd8), color-stop(#9a9ae1), color-stop(#8aa7ec), color-stop(#79b3f4), color-stop(#69bff8), color-stop(#52cffe), color-stop(#41dfff), color-stop(#46eefa), to(#5ffbf1));
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  font-family: 'Roboto', sans-serif;
+  color: #1f003b;
 }
 
 .App .content {
   margin: auto;
+  height: 500px;
+}
+
+.App .content .logout {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.App .content .logout:hover {
+  text-decoration: underline;
+}
+
+.App .content .create form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+  margin: 10px;
+  height: 2rem;
+}
+
+.App .content .create form input[type=text] {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #1f003b;
+  outline: none;
+}
+
+.App .content .create form input[type=text]::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.App .content .create form input[type=text]:-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.App .content .create form input[type=text]::-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.App .content .create form input[type=text]::placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.App .content .create form input[type=submit] {
+  background-color: #eedaff;
+  font-size: 1rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  border: 0;
+  border-radius: 5px;
+}
+
+.App .content .create form input[type=submit]:hover {
+  background-color: #1f003b;
+  color: #eedaff;
+}
+
+@media (min-width: 1120px) {
+  .content {
+    margin-top: 30px;
+  }
 }
 /*# sourceMappingURL=App.module.css.map */

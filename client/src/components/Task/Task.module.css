@@ -1,5 +1,5 @@
 .Task {
-  width: 350px;
+  padding-inline: 20px 10px;
 }
 
 .Task .content {
@@ -14,7 +14,8 @@
           justify-content: space-between;
 }
 
-.Task .content div {
+.Task .content .taskItem {
+  margin-block: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,6 +23,60 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 0.7rem;
+}
+
+.Task .content .taskItem p {
+  font-weight: 300;
+}
+
+.Task .content .taskItem input {
+  background-color: peru;
+  width: 150px;
+}
+
+.Task .content .taskItem input[type=text] {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #1f003b;
+  outline: none;
+}
+
+.Task .content .taskItem input[type=text]::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Task .content .taskItem input[type=text]:-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Task .content .taskItem input[type=text]::-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Task .content .taskItem input[type=text]::placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Task .content .controls button {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  line-height: 0px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.Task .content .controls .edit:hover {
+  color: #d1ebff;
+}
+
+.Task .content .controls .delete:hover {
+  color: #9f2f2f;
 }
 
 .hide {
@@ -33,21 +88,21 @@
 }
 
 .toggleStatus {
-  width: 1.2rem;
-  height: 1.2rem;
-  border: 3px solid #c0c0c0;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid #f9f9f9;
   border-radius: 100%;
 }
 
 .notStarted {
-  background-color: transparent;
+  background-color: #bfbfbf;
 }
 
 .inProgress {
-  background-color: blue;
+  background-color: #6b8ffb;
 }
 
 .completed {
-  background-color: green;
+  background-color: #88d095;
 }
 /*# sourceMappingURL=Task.module.css.map */

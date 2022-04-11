@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Task.module.css";
 import axios from "axios";
+import { MdModeEditOutline, MdOutlineClose } from "react-icons/md";
+import { BsCheckLg } from "react-icons/bs";
 
 const Task = ({ task, deleteTask, setTasks, userId }) => {
   const [toggleEdit, setToggleEdit] = useState(false);
@@ -65,9 +67,9 @@ const Task = ({ task, deleteTask, setTasks, userId }) => {
   };
 
   return (
-    <li key={task.id} className={`${styles.Task}`}>
+    <li key={task.id} className={styles.Task}>
       <div className={styles.content}>
-        <div>
+        <div className={styles.taskItem}>
           <button
             onClick={handleStatus}
             className={`${styles.toggleStatus} ${styles[input.status]}`}
@@ -91,9 +93,13 @@ const Task = ({ task, deleteTask, setTasks, userId }) => {
             />
           </form>
         </div>
-        <div>
-          <button onClick={handleEdit}>{toggleEdit ? "Save" : "Edit"}</button>
-          <button onClick={() => deleteTask(task.id)}>Delete</button>
+        <div className={styles.controls}>
+          <button onClick={handleEdit} className={styles.edit}>
+            {toggleEdit ? <BsCheckLg /> : <MdModeEditOutline />}
+          </button>
+          <button onClick={() => deleteTask(task.id)} className={styles.delete}>
+            <MdOutlineClose />
+          </button>
         </div>
       </div>
     </li>

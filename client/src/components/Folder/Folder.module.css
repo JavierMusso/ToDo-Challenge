@@ -1,4 +1,4 @@
-.title {
+.Folder .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,11 +9,97 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 250px;
+  margin: 10px;
+  margin-top: 30px;
+  border-bottom: 2px solid #1f003b;
+}
+
+.Folder .title h3 {
+  font-weight: 400;
+}
+
+.Folder .title div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.Folder .title div button {
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  line-height: 0px;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.Folder .title div .expand:hover {
+  color: #d1ebff;
+}
+
+.Folder .title div .delete:hover {
+  color: #9f2f2f;
+}
+
+.Folder .addTask {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1rem;
+}
+
+.Folder .addTask input[type=text] {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #1f003b;
+  outline: none;
+  width: 150px;
+}
+
+.Folder .addTask input[type=text]::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Folder .addTask input[type=text]:-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Folder .addTask input[type=text]::-ms-input-placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Folder .addTask input[type=text]::placeholder {
+  font-weight: 300;
+  color: #d8d8d8;
+}
+
+.Folder .addTask input[type=submit] {
+  background-color: #eedaff;
+  font-size: 0.9rem;
+  font-weight: 300;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  border: 0;
+  border-radius: 5px;
+}
+
+.Folder .addTask input[type=submit]:hover {
+  background-color: #1f003b;
+  color: #eedaff;
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .hide {
@@ -22,5 +108,10 @@ ul {
 
 .show {
   display: block;
+}
+
+.emptyFolder {
+  text-align: center;
+  font-weight: 300;
 }
 /*# sourceMappingURL=Folder.module.css.map */

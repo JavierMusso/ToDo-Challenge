@@ -1,12 +1,60 @@
-.title
-    display: flex
-    gap: 10px
-    align-items: center
-    justify-content: space-between
-    width: 250px
+.Folder
+    .title
+        display: flex
+        gap: 10px
+        align-items: center
+        justify-content: space-between
+        margin: 10px
+        margin-top: 30px
+        border-bottom: 2px solid #1f003b
+        h3
+            font-weight: 400
+        div
+            display: flex
+            gap: 0.5rem
+            button
+                border: none
+                background-color: transparent
+                font-size: 25px
+                line-height: 0px
+                cursor: pointer
+                transition: all 0.2s ease-in-out
+            .expand:hover
+                color: #d1ebff
+            .delete:hover
+                color: #9f2f2f
+    .addTask
+        display: flex
+        justify-content: center
+        gap: 1rem
+        input[type=text]
+            background: none
+            border: 0
+            border-bottom: 2px solid #1f003b
+            outline: none
+            width: 150px
+        input[type=text]::placeholder
+            font-weight: 300
+            color: #d8d8d8
+        input[type=submit]
+            background-color: #eedaff
+            font-size: 0.9rem
+            font-weight: 300
+            cursor: pointer
+            transition: background-color 0.2s ease-in-out
+            border: 0
+            border-radius: 5px
+        input[type=submit]:hover
+            background-color: #1f003b
+            color: #eedaff
+
 ul
     list-style-type: none
+    padding: 0
 .hide
     display: none
 .show
     display: block
+.emptyFolder
+    text-align: center
+    font-weight: 300
